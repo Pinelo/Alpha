@@ -32,6 +32,10 @@
             android:name=".saludCorporal"
             android:label="@string/title_activity_salud_corporal" >
         </activity>
+        <activity
+            android:name=".reporteSemaforo"
+            android:label="@string/title_activity_reporte_semaforo" >
+        </activity>
     </application>
 
 </manifest>

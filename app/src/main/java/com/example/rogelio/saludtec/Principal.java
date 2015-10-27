@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Principal extends AppCompatActivity {
     static String LOG_TAG = "Main Activity";
@@ -15,21 +16,33 @@ public class Principal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
-        final Button perfil = (Button) findViewById(R.id.perfil);
+        final ImageButton saludAlimenticia = (ImageButton) findViewById(R.id.saludAlimenticia);
+        final ImageButton saludCorporal = (ImageButton) findViewById(R.id.saludCorporal);
+        final ImageButton perfil = (ImageButton) findViewById(R.id.perfil);
+        final ImageButton reportesSemaforo = (ImageButton) findViewById(R.id.reportes);
 
         View.OnClickListener next = new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
-                try{
-                    Intent intent = new Intent(Principal.this, CreandoPerfil.class);
-                    startActivity(intent);
-                }
-                catch(Exception e){
-                    Log.e(LOG_TAG, "Failed to display message", e);
+                if (perfil.isPressed()) {
+                    Intent mapaintent = new Intent(Principal.this, CreandoPerfil.class);
+                    startActivity(mapaintent);
+                } else if (saludAlimenticia.isPressed()) {
+                    Intent mapaintent2 = new Intent(Principal.this, SaludAlimenticia.class);
+                    startActivity(mapaintent2);
+                } else if (saludCorporal.isPressed()) {
+                    Intent telintent = new Intent(Principal.this, saludCorporal.class);
+                    startActivity(telintent);
+                } else if (reportesSemaforo.isPressed()) {
+                    Intent fotointent = new Intent(Principal.this, reporteSemaforo.class);
+                    startActivity(fotointent);
                 }
             }
         };perfil.setOnClickListener(next);
+        saludAlimenticia.setOnClickListener(next);
+        saludCorporal.setOnClickListener(next);
+        reportesSemaforo.setOnClickListener(next);
     }
 
     @Override

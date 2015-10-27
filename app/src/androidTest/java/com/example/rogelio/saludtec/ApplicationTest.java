@@ -1,4 +1,4 @@
-package itesm.mx.alpha;
+package com.example.rogelio.saludtec;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

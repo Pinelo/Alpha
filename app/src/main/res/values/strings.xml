@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_creando_perfil">CreandoPerfil</string>
     <string name="title_activity_principal">Principal</string>
+    <string name="title_activity_salud_alimenticia">SaludAlimenticia</string>
+    <string name="title_activity_salud_corporal">saludCorporal</string>
 </resources>

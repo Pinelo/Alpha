@@ -1,41 +1,22 @@
 package com.example.rogelio.saludtec;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-public class Principal extends AppCompatActivity {
-    static String LOG_TAG = "Main Activity";
+public class SaludAlimenticia extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
-        final Button perfil = (Button) findViewById(R.id.perfil);
-
-        View.OnClickListener next = new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                try{
-                    Intent intent = new Intent(Principal.this, CreandoPerfil.class);
-                    startActivity(intent);
-                }
-                catch(Exception e){
-                    Log.e(LOG_TAG, "Failed to display message", e);
-                }
-            }
-        };perfil.setOnClickListener(next);
+        setContentView(R.layout.activity_salud_alimenticia);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        getMenuInflater().inflate(R.menu.menu_salud_alimenticia, menu);
         return true;
     }
 

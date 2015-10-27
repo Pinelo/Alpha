@@ -24,6 +24,14 @@
             android:name=".Principal"
             android:label="@string/title_activity_principal" >
         </activity>
+        <activity
+            android:name=".SaludAlimenticia"
+            android:label="@string/title_activity_salud_alimenticia" >
+        </activity>
+        <activity
+            android:name=".saludCorporal"
+            android:label="@string/title_activity_salud_corporal" >
+        </activity>
     </application>
 
 </manifest>

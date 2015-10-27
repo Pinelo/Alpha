@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.example.rogelio.saludtec.saludCorporal"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="¿Realizaste ejercicio?"
+        android:id="@+id/realizasteEjercicio"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sí"
+            android:id="@+id/siEjercicio"
+            android:layout_marginLeft="55dp"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:layout_marginLeft="150dp"
+            android:id="@+id/noEjercicio"
+            android:checked="false" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="¿Qué tipo de ejercicio?"
+        android:id="@+id/edad"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aeróbico"
+            android:id="@+id/Aerobico"
+            android:layout_marginLeft="55dp"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Aeróbico"
+            android:layout_marginLeft="60dp"
+            android:id="@+id/noAerobicoo"
+            android:checked="false" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="¿Cuántas horas?"
+        android:id="@+id/cuantasHoras"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/horasET" />
+
+    <TextView
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Las horas que deberías dormir de acuerdo a tu actividad física son...."
+        android:id="@+id/horasRecomendadas"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.35" />
+
+
+</LinearLayout>

@@ -1,16 +1,23 @@
 package com.example.rogelio.saludtec;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Principal extends FragmentActivity {
 
@@ -18,6 +25,14 @@ public class Principal extends FragmentActivity {
     Button menuEnterBt;
     CollectionPagerAdapter menuCollectionAdapter;
     ViewPager menuViewPager;
+    View middleCircle;
+    ViewGroup menuLayout;
+    TextView scoreTV;
+    TextView scoreLabelTV;
+
+    private int scoreHealth = 87;
+    private int scoreSleep = 40;
+    private int[] scores = {scoreHealth, scoreSleep, 0};
 
 
     @Override
@@ -25,12 +40,66 @@ public class Principal extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        scoreTV = (TextView)findViewById(R.id.scoreTV);
+        scoreLabelTV = (TextView)findViewById(R.id.scoreLabelTV);
 
+        middleCircle = findViewById(R.id.middleCircleV);
         menuCollectionAdapter =
                 new CollectionPagerAdapter(
                         getSupportFragmentManager(), getApplicationContext());
         menuViewPager = (ViewPager) findViewById(R.id.pager);
         menuViewPager.setAdapter(menuCollectionAdapter);
+
+        menuEnterBt = (Button)findViewById(R.id.menuEnterBT);
+        menuEnterBt.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int item = menuViewPager.getCurrentItem();
+                        Intent intent;
+                        switch (item) {
+                            case 0:
+                                intent = new Intent(Principal.this, SaludAlimenticia.class);
+                                startActivity(intent);
+                                break;
+                            case 1:
+                                intent = new Intent(Principal.this, saludCorporal.class);
+                                startActivity(intent);
+                                break;
+                            case 2:
+                                intent = new Intent(Principal.this, reporteSemaforo.class);
+                                startActivity(intent);
+                                break;
+                        }
+                    }
+                }
+        );
+
+        menuViewPager.addOnPageChangeListener(
+                new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        int item = menuViewPager.getCurrentItem();
+                        if (item == 2) {
+                            circleAnimationSmallHide();
+                        } else {
+                            circleAnimation(scores[item]);
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+
+                    }
+                }
+        );
+
 
 
 //        View.OnClickListener next = new View.OnClickListener(){
@@ -56,6 +125,49 @@ public class Principal extends FragmentActivity {
 //        saludAlimenticia.setOnClickListener(next);
 //        saludCorporal.setOnClickListener(next);
 //        reportesSemaforo.setOnClickListener(next);
+    }
+
+    public void circleAnimation(int score) {
+
+
+        int size;
+        if ((score * 4)< 300) {
+            size = 300;
+        } else {
+            size = score * 4;
+        }
+        scoreTV.setVisibility(View.VISIBLE);
+        scoreLabelTV.setVisibility(View.VISIBLE);
+        scoreTV.setText(Integer.toString(score));
+
+        menuLayout = (ViewGroup)findViewById(R.id.menuSecLayout);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            TransitionManager.beginDelayedTransition(menuLayout);
+        }
+        ViewGroup.LayoutParams sizeRules = middleCircle.getLayoutParams();
+//            sizeRules.width = ((int) getResources().getDimension(R.dimen.scoreCircleDim)) * scale;
+        sizeRules.width = size;
+        sizeRules.height = size;
+        middleCircle.setLayoutParams(sizeRules);
+
+    }
+
+    public void circleAnimationSmallHide() {
+
+        menuLayout = (ViewGroup)findViewById(R.id.menuSecLayout);
+//        solo sirve en versiones 18+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            TransitionManager.beginDelayedTransition(menuLayout);
+        }
+
+        ViewGroup.LayoutParams sizeRules = middleCircle.getLayoutParams();
+        sizeRules.width = 0;
+        sizeRules.height = 0;
+        middleCircle.setLayoutParams(sizeRules);
+        scoreTV.setVisibility(View.GONE);
+        scoreLabelTV.setVisibility(View.GONE);
+
+
     }
 
     @Override

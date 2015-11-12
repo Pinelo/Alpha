@@ -37,9 +37,9 @@ public class CollectionPagerAdapter extends FragmentStatePagerAdapter {
     private int getImageId(int position) {
         int id = R.mipmap.ic_launcher;
         switch (position) {
-            case 0: id = R.mipmap.one;
+            case 0: id = R.mipmap.food;
                 break;
-            case 1: id = R.mipmap.two;
+            case 1: id = R.mipmap.sports;
                 break;
             case 2: id = R.mipmap.three;
                 break;

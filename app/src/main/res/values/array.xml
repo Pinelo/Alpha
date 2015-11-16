@@ -5,4 +5,30 @@
         <item>Reposo</item>
         <item>Reporte</item>
     </string-array>
+
+    <string-array name="texts">
+        <item>Incluir gran variedad de frutas y verduras</item>
+        <item>Elegir cereales integrales </item>
+        <item>Consumir cereales y azucares con inteligencia </item>
+        <item>Elegir las grasas con inteligencia</item>
+        <item>Consumir alimentos ricos en calcio</item>
+        <item>Elegir y preparar los alimentos con poca sal</item>
+        <item>Beber agua natural</item>
+        <item>Comer por nutrición no por emoción </item>
+        <item>Tener conciencia del consumo de alimentos</item>
+        <item>Establecer horarios de comida</item>
+    </string-array>
+
+    <string-array name="subTexts">
+        <item>Seleccionar distintos colores en las frutas y verduras, ampliar la selección, elegir aquellas que no consumes regularmente.</item>
+        <item>Al menos la mitad de los cereales que se consumen al día sean de grano entero y ricos en fibra.</item>
+        <item>Endulzar las bebidas con cantidades pequeñas de azúcar o con endulzantes no calóricos, evitar las harinas refinadas sobre todo aquellas de repostería. </item>
+        <item>Consumir cantidades moderadas de grasa saturada, trans y colesterol (carnes rojas, mantecas, mantequillas) Preferir el uso de grasas mono y poliinsaturadas: cortes de carne bajos en grasa, pollo sin piel, pescado y grasas de origen vegetal como nueces, almendras, cacahuates y aguacate. </item>
+        <item>Incluir al menos 3 alimentos ricos en calcio cada día (yogurt, quesos, leche).</item>
+        <item>Consumir menos de 5 gr. de sal al día (2.4 gr de sodio, revisa las etiquetas de los alimentos para conocer su contenido de este mineral). </item>
+        <item>Consumir agua natural todos los días según las necesidades individuales. </item>
+        <item>Identificar las señales de hambre y saciedad. Iniciar a comer por necesidad física y no por señales externas como ansiedad. Decidir parar de comer cuando se esta satisfecho, no ignorar el mensaje de estar satisfecho.  </item>
+        <item>Comer pequeños trozos de alimento, masticar pausadamente y no tragar apresuradamente, tomar de 20 -30 minutos para comer y centrar la atención en el plato y las porciones. </item>
+        <item>Tener un horario establecido de comidas, evitar el ayuno o saltar tiempos de comida. Designar un lugar y tiempo especifico para ello. </item>
+    </string-array>
 </resources>

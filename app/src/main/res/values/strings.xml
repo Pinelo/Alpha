@@ -9,4 +9,9 @@
     <string name="title_activity_salud_corporal">saludCorporal</string>
     <string name="title_activity_reporte_semaforo">reporteSemaforo</string>
     <string name="menuEnter">Entrar</string>
+    <string name="defaultFoodFormText">Incluir gran variedad de frutas y verduras </string>
+    <string name="defaultFoodFormSubtext">Seleccionar distintos colores en las frutas y verduras, ampliar la selección, elegir aquellas que no consumes regularmente.</string>
+
+
+
 </resources>

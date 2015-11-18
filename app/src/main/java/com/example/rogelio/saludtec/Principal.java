@@ -29,6 +29,7 @@ public class Principal extends FragmentActivity {
     ViewGroup menuLayout;
     TextView scoreTV;
     TextView scoreLabelTV;
+    ImageButton profileIB;
 
     private int scoreHealth = 87;
     private int scoreSleep = 40;
@@ -40,6 +41,7 @@ public class Principal extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        profileIB = (ImageButton)findViewById(R.id.enterProfileBT);
         scoreTV = (TextView)findViewById(R.id.scoreTV);
         scoreLabelTV = (TextView)findViewById(R.id.scoreLabelTV);
 
@@ -100,31 +102,15 @@ public class Principal extends FragmentActivity {
                 }
         );
 
-
-
-//        View.OnClickListener next = new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View v){
-//                if (perfil.isPressed()) {
-//                    Intent mapaintent = new Intent(Principal.this, CreandoPerfil.class);
-//                    startActivity(mapaintent);
-//                } else if (saludAlimenticia.isPressed()) {
-//                    Intent mapaintent2 = new Intent(Principal.this, SaludAlimenticia.class);
-//                    startActivity(mapaintent2);
-//                } else if (saludCorporal.isPressed()) {
-//                    Intent telintent = new Intent(Principal.this, saludCorporal.class);
-//                    startActivity(telintent);
-//                } else if (reportesSemaforo.isPressed()) {
-//                    Intent fotointent = new Intent(Principal.this, reporteSemaforo.class);
-//                    startActivity(fotointent);
-//                }
-//            }
-//        };
-//    perfil.setOnClickListener(next);
-//        saludAlimenticia.setOnClickListener(next);
-//        saludCorporal.setOnClickListener(next);
-//        reportesSemaforo.setOnClickListener(next);
+        profileIB.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent profileIntent = new Intent(Principal.this, Profile.class);
+                        startActivity(profileIntent);
+                    }
+                }
+        );
     }
 
     public void circleAnimation(int score) {
@@ -132,9 +118,9 @@ public class Principal extends FragmentActivity {
 
         int size;
         if ((score * 4)< 300) {
-            size = 300;
+            size = 360;
         } else {
-            size = score * 4;
+            size = score * 6;
         }
         scoreTV.setVisibility(View.VISIBLE);
         scoreLabelTV.setVisibility(View.VISIBLE);

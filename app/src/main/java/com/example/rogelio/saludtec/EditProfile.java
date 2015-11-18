@@ -15,29 +15,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class FirstLogin extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity {
 
-    static String LOG_TAG = "Main Activity";
+    Button editProfileSaveBT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_login);
-        final Button Login = (Button) findViewById(R.id.button);
+        setContentView(R.layout.activity_edit_profile);
 
-        View.OnClickListener next = new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                try{
-                    Intent intent = new Intent(FirstLogin.this, CreandoPerfil.class);
-                    startActivity(intent);
+        editProfileSaveBT = (Button)findViewById(R.id.editProfileSaveBT);
+        editProfileSaveBT.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
                 }
-                catch(Exception e){
-                    Log.e(LOG_TAG, "Failed to display message", e);
-                }
-            }
-        };Login.setOnClickListener(next);
+        );
     }
 
     @Override

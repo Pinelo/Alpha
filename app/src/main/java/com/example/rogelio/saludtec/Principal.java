@@ -1,6 +1,8 @@
 package com.example.rogelio.saludtec;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -40,6 +43,7 @@ public class Principal extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+        firstTimeSetup();
 
         profileIB = (ImageButton)findViewById(R.id.enterProfileBT);
         scoreTV = (TextView)findViewById(R.id.scoreTV);
@@ -111,6 +115,18 @@ public class Principal extends FragmentActivity {
                     }
                 }
         );
+    }
+
+//    crea un perfil si es la primera vez
+    private void firstTimeSetup() {
+        SharedPreferences sharedPreferences = getSharedPreferences("userProfile",
+                Context.MODE_PRIVATE);
+        Boolean firstTime = sharedPreferences.getBoolean(EditProfile.FIRST_TIME, true);
+
+        if (firstTime) {
+            Intent firstTimeEditProfile = new Intent(Principal.this, EditProfile.class);
+            startActivity(firstTimeEditProfile);
+        }
     }
 
     public void circleAnimation(int score) {

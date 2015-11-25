@@ -77,6 +77,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Hugo Gonzalez"
                         android:textSize="15dp"
+                        android:id="@+id/userNameET"
                         android:textColor="#000"/>
 
                 </LinearLayout>
@@ -101,6 +102,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:hint="hugo@gmail.com"
+                        android:id="@+id/userEmailET"
                         android:textSize="15dp"
                         android:textColor="#000"
                         android:layout_marginBottom="10dp"/>
@@ -130,6 +132,7 @@
                         <NumberPicker
                             android:layout_width="fill_parent"
                             android:layout_height="50dp"
+                            android:id="@+id/userWeightNP"
                             />
 
                     </LinearLayout>
@@ -151,6 +154,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_marginTop="13dp"
+                            android:id="@+id/userHeightET"
                             android:hint="1.72"/>
 
                     </LinearLayout>
@@ -167,6 +171,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="200dp"
                         android:padding="10dp"
+                        android:id="@+id/userProfileIV"
                         android:src="@mipmap/ic_launcher"/>
 
 

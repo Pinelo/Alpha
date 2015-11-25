@@ -39,122 +39,151 @@
       </RelativeLayout>
   </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0px"
         android:layout_weight="3"
         android:background="#fff">
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:paddingTop="20dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp">
+            android:layout_height="fill_parent">
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:orientation="vertical"
-                android:id="@+id/linearLayout2">
+                android:paddingTop="20dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PRIMER NOMBRE Y APELLIDO"
-                    android:textStyle="bold"
-                    android:textSize="10dp"
-                    android:textColor="#ACACAA"/>
-
-                <EditText
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Hugo Gonzalez"
-                    android:textSize="15dp"
-                    android:textColor="#000"/>
+                    android:orientation="vertical"
+                    android:id="@+id/linearLayout2">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PRIMER NOMBRE Y APELLIDO"
+                        android:textStyle="bold"
+                        android:textSize="10dp"
+                        android:textColor="#ACACAA"/>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/linearLayout2"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentStart="true"
-                android:id="@+id/linearLayout3">
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Hugo Gonzalez"
+                        android:textSize="15dp"
+                        android:textColor="#000"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CORREO"
-                    android:textStyle="bold"
-                    android:textSize="10dp"
-                    android:textColor="#ACACAA"/>
+                </LinearLayout>
 
-                <EditText
+                <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="hugo@gmail.com"
-                    android:textSize="15dp"
-                    android:textColor="#000"
-                    android:layout_marginBottom="10dp"/>
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/linearLayout3">
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CORREO"
+                        android:textStyle="bold"
+                        android:textSize="10dp"
+                        android:textColor="#ACACAA"/>
 
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linearLayout3"
-                android:layout_alignParentStart="true"
-                android:orientation="vertical">
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="hugo@gmail.com"
+                        android:textSize="15dp"
+                        android:textColor="#000"
+                        android:layout_marginBottom="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Kilogramos"/>
+                </LinearLayout>
 
-                <NumberPicker
-                  android:layout_width="fill_parent"
-                  android:layout_height="50dp"
-                  />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/linearLayout3"
-                android:layout_alignEnd="@+id/linearLayout3">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="Estatura (m)"/>
-
-                <EditText
+                <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_marginTop="13dp"
-                    android:hint="1.72"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/numberFieldLayouts"
+                    android:layout_below="@id/linearLayout3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingRight="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Kilogramos"/>
+
+                        <NumberPicker
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Estatura (m)"/>
+
+                        <EditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginTop="13dp"
+                            android:hint="1.72"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:padding="10dp"
+                        android:src="@mipmap/ic_launcher"/>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/editProfileSave"
+                    android:background="#4E92DF"
+                    android:textColor="#fff"
+                    android:id="@+id/editProfileSaveBT"
+                    android:layout_marginBottom="30dp"
+                    android:layout_gravity="center" />
 
             </LinearLayout>
-
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="@string/menuEnter"
-                android:background="#4E92DF"
-                android:textColor="#fff"
-                android:id="@+id/editProfileSaveBT"
-                android:layout_marginBottom="30dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
-
-        </RelativeLayout>
+        </ScrollView>
 
 
 

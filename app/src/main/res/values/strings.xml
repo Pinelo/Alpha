@@ -11,7 +11,7 @@
     <string name="menuEnter">Entrar</string>
     <string name="defaultFoodFormText">Incluir gran variedad de frutas y verduras </string>
     <string name="defaultFoodFormSubtext">Seleccionar distintos colores en las frutas y verduras, ampliar la selección, elegir aquellas que no consumes regularmente.</string>
-
+    <string name="editProfileSave">Actualizar</string>
 
 
 </resources>

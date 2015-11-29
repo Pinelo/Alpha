@@ -108,6 +108,44 @@
                         android:layout_marginBottom="10dp"/>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GéNERO"
+                        android:textStyle="bold"
+                        android:textSize="10dp"
+                        android:textColor="#ACACAA"/>
+
+                    <RadioGroup
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/userGenderRG">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/maleRB"
+                            android:text="Masculino"
+                            android:textColor="#ACACAA"
+                            android:layout_marginRight="45dp"/>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Femenino"
+                            android:id="@+id/femaleRB"
+                            android:textColor="#ACACAA" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -167,12 +205,13 @@
                     android:layout_gravity="center"
                     android:gravity="center">
 
-                    <ImageView
+                    <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="200dp"
                         android:padding="10dp"
                         android:id="@+id/userProfileIV"
-                        android:src="@mipmap/ic_launcher"/>
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitXY"/>
 
 
                 </LinearLayout>

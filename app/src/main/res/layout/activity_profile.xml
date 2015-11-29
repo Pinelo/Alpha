@@ -47,11 +47,10 @@
                 android:text="Masculino"
                 android:textColor="#fff"
                 android:textSize="20dp"
-
                 android:layout_marginBottom="0dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/profileEmail"
-                android:id="@+id/textView2" />
+                android:id="@+id/userGenderTV" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,8 +59,13 @@
                 android:textColor="#fff"
                 android:textSize="20dp"
                 android:id="@+id/profileHeight"
-                android:layout_alignTop="@+id/textView2"
+                android:layout_alignTop="@+id/userGenderTV"
                 android:layout_alignEnd="@+id/profileName" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/userProfile"/>
 
 
         </RelativeLayout>

@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 public class saludCorporal extends AppCompatActivity {
 
+    public static String LAST_FITNESS_UPDATE = "lastFitnessUpdate";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

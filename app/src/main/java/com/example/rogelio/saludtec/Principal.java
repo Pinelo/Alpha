@@ -22,6 +22,9 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 public class Principal extends FragmentActivity {
 
     static String LOG_TAG = "Main Activity";
@@ -34,9 +37,16 @@ public class Principal extends FragmentActivity {
     TextView scoreLabelTV;
     ImageButton profileIB;
 
+    DbOperations dbo;
+
+    SimpleDateFormat timeFormat  = new SimpleDateFormat("mm:hh");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     private int scoreHealth = 87;
     private int scoreSleep = 40;
     private int[] scores = {scoreHealth, scoreSleep, 0};
+
+    SharedPreferences sharedPreferences;
 
 
     @Override
@@ -44,6 +54,12 @@ public class Principal extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
         firstTimeSetup();
+
+        dbo = new DbOperations(this);
+//        dbo.cleanDb();
+
+        sharedPreferences = getSharedPreferences(EditProfile.USER_PROFILE,
+                Context.MODE_PRIVATE);
 
         profileIB = (ImageButton)findViewById(R.id.enterProfileBT);
         scoreTV = (TextView)findViewById(R.id.scoreTV);
@@ -56,6 +72,12 @@ public class Principal extends FragmentActivity {
         menuViewPager = (ViewPager) findViewById(R.id.pager);
         menuViewPager.setAdapter(menuCollectionAdapter);
 
+
+//        updates the score values for the circles
+        scoreSetUp();
+//        displays the score circle for the first section
+        circleAnimation(scores[0]);
+
         menuEnterBt = (Button)findViewById(R.id.menuEnterBT);
         menuEnterBt.setOnClickListener(
                 new View.OnClickListener() {
@@ -65,12 +87,36 @@ public class Principal extends FragmentActivity {
                         Intent intent;
                         switch (item) {
                             case 0:
-                                intent = new Intent(Principal.this, SaludAlimenticia.class);
-                                startActivity(intent);
+                                String lastNutritionUpdate = sharedPreferences.getString(
+                                        SaludAlimenticia.LAST_UPDATE, "");
+
+                                if (dateFormat.format(
+                                        System.currentTimeMillis()).equals(lastNutritionUpdate)) {
+
+                                    Toast.makeText(getApplicationContext(),
+                                            "Ya hiciste tu reporte diario",
+                                            Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    intent = new Intent(Principal.this, SaludAlimenticia.class);
+                                    startActivity(intent);
+                                }
+
                                 break;
                             case 1:
-                                intent = new Intent(Principal.this, saludCorporal.class);
-                                startActivity(intent);
+                                String lastFitnessUpdate = sharedPreferences.getString(
+                                        saludCorporal.LAST_FITNESS_UPDATE, "");
+                                if (dateFormat.format(
+                                        System.currentTimeMillis()).equals(lastFitnessUpdate)) {
+
+                                    Toast.makeText(getApplicationContext(),
+                                            "Ya hiciste tu reporte diario",
+                                            Toast.LENGTH_SHORT).show();
+
+                                } else {
+                                    intent = new Intent(Principal.this, saludCorporal.class);
+                                    startActivity(intent);
+                                }
                                 break;
                             case 2:
                                 intent = new Intent(Principal.this, reporteSemaforo.class);
@@ -117,6 +163,25 @@ public class Principal extends FragmentActivity {
         );
     }
 
+    private void scoreSetUp() {
+//        String currentDate = timeFormat.format(System.currentTimeMillis());
+        int i;
+        float sum = 0, tempS;
+        List<NutritionReport> nutritionReports = dbo.getNutritionReportsSince("not finished");
+
+        for (i = 0; i < nutritionReports.size(); i++) {
+            tempS = nutritionReports.get(i).getGrade();
+            sum += tempS;
+        }
+        if (sum == 0) {
+            scoreHealth = 0;
+        } else {
+            scoreHealth = (int) sum/nutritionReports.size();
+        }
+        scores[0] = scoreHealth;
+    }
+
+
 //    crea un perfil si es la primera vez
     private void firstTimeSetup() {
         SharedPreferences sharedPreferences = getSharedPreferences("userProfile",
@@ -133,10 +198,10 @@ public class Principal extends FragmentActivity {
 
 
         int size;
-        if ((score * 4)< 300) {
-            size = 360;
+        if ((score * 7)< 300) {
+            size = 300;
         } else {
-            size = score * 6;
+            size = score * 7;
         }
         scoreTV.setVisibility(View.VISIBLE);
         scoreLabelTV.setVisibility(View.VISIBLE);

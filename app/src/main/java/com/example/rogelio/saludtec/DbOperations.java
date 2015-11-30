@@ -130,4 +130,52 @@ public class DbOperations {
         );
         return report;
     }
+
+    public int getNutritionScore() {
+        List<NutritionReport> nutritionReports = getNutritionReportsSince("not finished");
+        int i;
+        float sum = 0, tempS;
+
+        for (i = 0; i < nutritionReports.size(); i++) {
+            tempS = nutritionReports.get(i).getGrade();
+            sum += tempS;
+        }
+        if (sum == 0) {
+            return  0;
+        } else {
+            return (int) sum/nutritionReports.size();
+        }
+    }
+
+    public int[] getNutritionAverages() {
+        List<NutritionReport> nutritionReports = getNutritionReportsSince("not finished");
+
+        int criteria;
+        int[] criteriaAverages = new int[10];
+        int i, j;
+        float sum = 0, tempS;
+        for (j = 0; j < 10; j++) {
+
+            int[] criteriaList = new int[nutritionReports.size()];
+            for (i = 0; i < nutritionReports.size(); i++) {
+                criteria = nutritionReports.get(i).getCriteria(j+1);
+                criteriaList[i] = criteria;
+            }
+
+            criteriaAverages[j] = findAverage(criteriaList);
+
+        }
+        return criteriaAverages;
+    }
+
+    public int findAverage(int[] list) {
+        float average, sum = 0;
+        int i, top = list.length*5;
+
+        for (i = 0; i < list.length; i++ ) {
+            sum += list[i];
+        }
+        average = sum/top*100;
+        return (int ) average;
+    }
 }

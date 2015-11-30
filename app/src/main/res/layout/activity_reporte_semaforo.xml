@@ -7,19 +7,647 @@
     android:orientation="vertical"
     tools:context="com.example.rogelio.saludtec.reporteSemaforo">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-    android:layout_width="357dp"
-    android:layout_height="293dp"
-    android:src="@drawable/semafverde"
-    android:id="@+id/logoApp" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="250dp"
+                android:src="@mipmap/sun"
+                android:scaleType="fitXY"
+                android:id="@+id/imageBackgroundReport"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Tu alimentación ha sido balanceada durante la ultima semana, Felicidades!!!"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/report_circle"
+                android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="215dp"
+                android:layout_marginRight="15dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/grade"
+                    android:scaleType="fitXY"/>
+
+
+
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/imageBackgroundReport"
+                android:id="@+id/linearLayout4"
+                android:paddingTop="20dp">
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:minHeight="50dp"
+                    android:paddingLeft="20dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reposo"
+                        android:textStyle="bold"
+                        android:textSize="15dp"/>
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textStyle="bold"
+                            android:layout_marginRight="5dp"
+                            android:id="@+id/fitnessReportScoreTV"/>
+
+                        <ProgressBar
+                            android:id="@+id/fitnessReportPB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            style="?android:attr/progressBarStyleHorizontal"
+
+                            android:indeterminate="false"
+                            android:max="100"
+
+
+                            android:minWidth="180dp"
+                            android:progress="0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:minHeight="50dp"
+                    android:paddingLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nutrición"
+                        android:textStyle="bold"
+                        android:textSize="15dp"/>
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textStyle="bold"
+                            android:layout_marginRight="5dp"
+                            android:id="@+id/nutritionReportScoreTV"/>
+
+                        <ProgressBar
+                            android:id="@+id/foodReportPB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            style="?android:attr/progressBarStyleHorizontal"
+
+                            android:indeterminate="false"
+                            android:max="100"
+
+
+                            android:minWidth="180dp"
+                            android:progress="0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:background="#ccc">
+
+                    </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#f2f2f2"
+                    android:paddingTop="20dp"
+                    android:paddingRight="10dp">
+
+
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaOneTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaOneGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaOnePB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaTwoTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaTwoGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaTwoPB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaThreeTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaThreeGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaThreePB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaFourTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaFourGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaFourPB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaFiveTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaFiveGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaFivePB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaSixTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaSixGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaSixPB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaSevenTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaSevenGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaSevenPB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaEightTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaEightGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaEightPB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaNineTV"/>
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaNineGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaNinePB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:minHeight="50dp"
+                        android:paddingLeft="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reposo"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:id="@+id/criteriaTenTV" />
+
+
+
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0%"
+                                android:textStyle="bold"
+                                android:layout_marginRight="5dp"
+                                android:id="@+id/criteriaTenGradeTV"/>
+
+                            <ProgressBar
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/criteriaTenPB"
+
+                                style="?android:attr/progressBarStyleHorizontal"
+
+                                android:indeterminate="false"
+                                android:max="100"
+
+
+                                android:minWidth="150dp"
+                                android:progress="0" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+
 
 </LinearLayout>

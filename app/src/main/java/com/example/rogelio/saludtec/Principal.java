@@ -135,12 +135,7 @@ public class Principal extends FragmentActivity {
 
                     @Override
                     public void onPageSelected(int position) {
-                        int item = menuViewPager.getCurrentItem();
-                        if (item == 2) {
-                            circleAnimationSmallHide();
-                        } else {
-                            circleAnimation(scores[item]);
-                        }
+                        updateScoreCircle();
 
 
                     }
@@ -163,26 +158,35 @@ public class Principal extends FragmentActivity {
         );
     }
 
+    private void updateScoreCircle() {
+
+        int item = menuViewPager.getCurrentItem();
+        if (item == 2) {
+            circleAnimationSmallHide();
+        } else {
+            circleAnimation(scores[item]);
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        scoreSetUp();
+
+    }
+
     private void scoreSetUp() {
 //        String currentDate = timeFormat.format(System.currentTimeMillis());
-        int i;
-        float sum = 0, tempS;
-        List<NutritionReport> nutritionReports = dbo.getNutritionReportsSince("not finished");
-
-        for (i = 0; i < nutritionReports.size(); i++) {
-            tempS = nutritionReports.get(i).getGrade();
-            sum += tempS;
-        }
-        if (sum == 0) {
-            scoreHealth = 0;
-        } else {
-            scoreHealth = (int) sum/nutritionReports.size();
-        }
+        scoreHealth = dbo.getNutritionScore();
         scores[0] = scoreHealth;
+        updateScoreCircle();
     }
 
 
-//    crea un perfil si es la primera vez
+
+
+    //    crea un perfil si es la primera vez
     private void firstTimeSetup() {
         SharedPreferences sharedPreferences = getSharedPreferences("userProfile",
                 Context.MODE_PRIVATE);

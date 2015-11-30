@@ -17,6 +17,7 @@ public class NutritionReport {
     public int criteriaEight;
     public int criteriaNine;
     public int criteriaTen;
+    public final int CRITERIA_AMMOUNT = 10;
     public String date;
     public String time;
 
@@ -38,6 +39,53 @@ public class NutritionReport {
         sum += criteriaTen;
         grade = sum/50*100;
         return (int) grade;
+    }
+
+    public int getCriteria(int criteria) {
+        int grade = 0;
+        switch (criteria) {
+            case 1:
+                grade = criteriaOne;
+                break;
+
+            case 2:
+                grade = criteriaTwo;
+                break;
+
+            case 3:
+                grade = criteriaThree;
+                break;
+
+            case 4:
+                grade = criteriaFour;
+                break;
+
+            case 5:
+                grade = criteriaFive;
+                break;
+
+            case 6:
+                grade = criteriaSix;
+                break;
+
+            case 7:
+                grade = criteriaSeven;
+                break;
+
+            case 8:
+                grade = criteriaEight;
+                break;
+
+            case 9:
+                grade = criteriaNine;
+                break;
+
+            case 10:
+                grade = criteriaTen;
+                break;
+        }
+
+        return grade;
     }
 
     public void setGrade(int criteria, int grade) {

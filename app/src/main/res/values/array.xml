@@ -6,6 +6,19 @@
         <item>Reporte</item>
     </string-array>
 
+    <string-array name="textCut">
+        <item>Frutas </item>
+        <item>Integrales</item>
+        <item>Cereales</item>
+        <item>Grasas</item>
+        <item>Calcio</item>
+        <item>Sal</item>
+        <item>Agua</item>
+        <item>Motivación</item>
+        <item>Conciencia</item>
+        <item>Horarios</item>
+    </string-array>
+
     <string-array name="texts">
         <item>Incluir gran variedad de frutas y verduras</item>
         <item>Elegir cereales integrales </item>

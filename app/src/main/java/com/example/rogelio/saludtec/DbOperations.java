@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,29 @@ public class DbOperations {
         String query = "DELETE FROM " + DBHandler.TABLE_NUTRITION + " WHERE 1";
         db.execSQL(query);
     }
+
+    public void  addWeightReport(int val) {
+        db = dbHandler.getWritableDatabase();
+        SimpleDateFormat timeFormat  = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        String time = timeFormat.format(System.currentTimeMillis());
+        String date = dateFormat.format(System.currentTimeMillis());
+
+        try{
+            ContentValues values = new ContentValues();
+            values.put(DBHandler.COLUMN_WEIGHT, val);
+            values.put(DBHandler.COLUMN_WEIGHT_DATE, date);
+            values.put(DBHandler.COLUMN_WEIGHT_TIME, time);
+
+            db.insert(DBHandler.TABLE_WEIGHT, null, values);
+
+        }catch (SQLiteException e) {
+            Log.d("db", "Error saving weight");
+        }
+    }
+
+
 
     public void addReport(NutritionReport report) {
         db = dbHandler.getWritableDatabase();
@@ -86,6 +110,46 @@ public class DbOperations {
                 Log.d("tag", "Error while trying to add product to database");
             }
         }
+    }
+
+    public int getLastWeight() {
+        db = dbHandler.getReadableDatabase();
+        String query = " SELECT " + DBHandler.COLUMN_WEIGHT + " FROM " + DBHandler.TABLE_WEIGHT +
+                " ORDER BY " + DBHandler.COLUMN_WEIGHT_ID + " DESC LIMIT 1";
+
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.getCount() == 1) {
+            cursor.moveToFirst();
+            int newestW = cursor.getInt(cursor.getColumnIndex(DBHandler.COLUMN_WEIGHT));
+            return newestW;
+        } else {
+            return 0;
+        }
+    }
+
+    public int getWeightChange() {
+        db = dbHandler.getReadableDatabase();
+        String query = " SELECT " + DBHandler.COLUMN_WEIGHT + " FROM " + DBHandler.TABLE_WEIGHT +
+                " ORDER BY " + DBHandler.COLUMN_WEIGHT_ID + " ASC LIMIT 1";
+
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.getCount() == 0) {
+            return 0;
+        } else {
+            cursor.moveToFirst();
+            int originalW = cursor.getInt(cursor.getColumnIndex(DBHandler.COLUMN_WEIGHT));
+
+            query = " SELECT " + DBHandler.COLUMN_WEIGHT + " FROM " + DBHandler.TABLE_WEIGHT +
+                    " ORDER BY " + DBHandler.COLUMN_WEIGHT_ID + " DESC LIMIT 1";
+
+            cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            int newestW = cursor.getInt(cursor.getColumnIndex(DBHandler.COLUMN_WEIGHT));
+
+            return originalW - newestW;
+        }
+
+
     }
 
 //    returns false if a report has been made for the provided day
@@ -284,11 +348,19 @@ public class DbOperations {
 
     public int getMostRecentSleepScore() {
         List<SleepReport> list = getSleepReportsSince("");
-        return (int)list.get(0).getGrade();
+        if (list.size() == 0) {
+            return 0;
+        } else {
+            return (int)list.get(0).getGrade();
+        }
     }
 
     public int getMostRecentFoodScore() {
         List<NutritionReport> list = getNutritionReportsSince("");
-        return (int)list.get(0).getGrade();
+        if (list.size() == 0) {
+            return 0;
+        } else {
+            return (int)list.get(0).getGrade();
+        }
     }
 }

@@ -34,6 +34,7 @@ public class EditProfile extends AppCompatActivity {
     public static final String FIRST_TIME = "firstTime";
     public static final String USER_PROFILE = "userProfile";
     public static final String USER_GENDER = "userGender";
+    public static final String USER_WEIGHT = "userWeight";
     static final int REQUEST_IMAGE_CAPTURE= 1;
 
     Button editProfileSaveBT;
@@ -45,6 +46,8 @@ public class EditProfile extends AppCompatActivity {
     RadioGroup userGenderRG;
     RadioButton maleRB;
     RadioButton femaleRB;
+    DbOperations dbo;
+    boolean picTaken = false;
 
     Bitmap photo;
 
@@ -53,6 +56,8 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+
+        dbo = new DbOperations(this);
 
         userNameET = (EditText)findViewById(R.id.userNameET);
         userEmailET = (EditText)findViewById(R.id.userEmailET);
@@ -65,6 +70,8 @@ public class EditProfile extends AppCompatActivity {
 
 //      minimo para el peso de usuario
         userWeightET.setMinValue(30);
+        userWeightET.setMaxValue(150);
+        userWeightET.setValue(50);
 //        user.setMaxValue(1000);
         userWeightET.setWrapSelectorWheel(false);
 
@@ -83,6 +90,8 @@ public class EditProfile extends AppCompatActivity {
                         editor.putString(USER_EMAIL, userEmailET.getText().toString());
                         editor.putString(USER_HEIGHT, userHeightET.getText().toString());
                         editor.putString(USER_PROFILE, encodeTobase64(photo));
+                        dbo.addWeightReport(userWeightET.getValue());
+
 
                         int id = userGenderRG.indexOfChild(findViewById(
                                 userGenderRG.getCheckedRadioButtonId()));
@@ -125,6 +134,7 @@ public class EditProfile extends AppCompatActivity {
 
     //    toma foto
     public void launchCamera(View view) {
+        picTaken = true;
         Intent camIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(camIntent, REQUEST_IMAGE_CAPTURE);
     }
@@ -149,6 +159,7 @@ public class EditProfile extends AppCompatActivity {
         String gender = sharedPreferences.getString(USER_GENDER, "");
         String userProfile = sharedPreferences.getString(USER_PROFILE, "");
         Bitmap profile = Profile.decodeBase64(userProfile);
+        photo = profile;
 
         if (gender.equals("Masculino")) {
             maleRB.setChecked(true);
@@ -160,6 +171,7 @@ public class EditProfile extends AppCompatActivity {
         userEmailET.setText(userEmail);
         userHeightET.setText(userHeight);
         userProfileIV.setImageBitmap(profile);
+        userWeightET.setValue(dbo.getLastWeight());
 
 
     }

@@ -48,6 +48,7 @@ public class SleepHourFragment extends Fragment{
         if (!def) {
             values = getArguments().getStringArray("values");
             hourNP.setMaxValue(values.length-1);
+            hourNP.setValue(0);
             hourNP.setFormatter(new NumberPicker.Formatter() {
 
                 @Override

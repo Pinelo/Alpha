@@ -20,18 +20,24 @@ public class Profile extends AppCompatActivity {
     TextView userEmailTV;
     TextView userHeightTV;
     TextView userGenderTV;
+    TextView userWeightTV;
+    TextView profileWeightLabelTV;
     ImageView userProfileIV;
+    DbOperations dbo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        dbo = new DbOperations(this);
 
         userNameTV = (TextView)findViewById(R.id.profileName);
         userEmailTV = (TextView)findViewById(R.id.profileEmail);
         userHeightTV = (TextView)findViewById(R.id.profileHeight);
         userGenderTV = (TextView)findViewById(R.id.userGenderTV);
+        userWeightTV = (TextView)findViewById(R.id.profileWeightTV);
+        profileWeightLabelTV = (TextView)findViewById(R.id.profileWeightLabelTV);
         userProfileIV = (ImageView)findViewById(R.id.userProfile);
 //        actualiza los nombres
         updateTextViews();
@@ -64,6 +70,18 @@ public class Profile extends AppCompatActivity {
         String userProfile = sharedPreferences.getString(EditProfile.USER_PROFILE, "");
         userHeight = userHeight + " Metros";
         Bitmap profilePic = decodeBase64(userProfile);
+
+        int weightChange = dbo.getWeightChange();
+        if (weightChange >= 0) {
+            userWeightTV.setText(Integer.toString(weightChange));
+            profileWeightLabelTV.setText("Kg Perdidos");
+
+        } else {
+            weightChange = weightChange * -1;
+            userWeightTV.setText(Integer.toString(weightChange));
+            profileWeightLabelTV.setText("Kg Ganados");
+
+        }
 
 
         userNameTV.setText(userName);

@@ -44,4 +44,27 @@
         <item>Comer pequeños trozos de alimento, masticar pausadamente y no tragar apresuradamente, tomar de 20 -30 minutos para comer y centrar la atención en el plato y las porciones. </item>
         <item>Tener un horario establecido de comidas, evitar el ayuno o saltar tiempos de comida. Designar un lugar y tiempo especifico para ello. </item>
     </string-array>
+    
+    <string-array name="wakeUpValues">
+        <item>6:00am</item>
+        <item>7:00am</item>
+        <item>8:00am</item>
+        <item>9:00am</item>
+        <item>10:00am</item>
+        <item>11:00am</item>
+        <item>12:00pm</item>
+        <item>1:00pm</item>
+    </string-array>
+    
+    <string-array name="lightsOutValues">
+        <item>8:00pm</item>
+        <item>9:00pm</item>
+        <item>10:00pm</item>
+        <item>11:00pm</item>
+        <item>12:00am</item>
+        <item>1:00am</item>
+        <item>2:00am</item>
+        <item>3:00am</item>
+    </string-array>
+
 </resources>

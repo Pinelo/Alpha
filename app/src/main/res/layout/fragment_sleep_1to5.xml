@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+        android:text="@string/defaultFoodFormText"
+        android:id="@+id/sleepQuestionTV"
+        android:textStyle="bold"
+        android:textColor="#fff"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="75dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:id="@+id/linearLayout">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="1"
+                android:id="@+id/oneSleepBT"
+                android:textColor="#fff"
+                android:background="#3A1952"
+                android:layout_margin="0px"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="2"
+                android:id="@+id/twoSleepBT"
+                android:textColor="#fff"
+                android:background="#3A1952"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="3"
+                android:id="@+id/threeSleepBT"
+                android:textColor="#fff"
+                android:background="#3A1952"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="4"
+                android:id="@+id/fourSleepBT"
+                android:textColor="#fff"
+                android:background="#3A1952"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="5"
+                android:id="@+id/fiveSleepBT"
+                android:textColor="#fff"
+                android:background="#3A1952"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

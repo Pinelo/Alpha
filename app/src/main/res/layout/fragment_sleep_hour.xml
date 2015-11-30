@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="90dp"
+        android:text="Pregunta Sueño"
+        android:id="@+id/mainSleepTV"
+        android:textStyle="bold"
+        android:textColor="#fff"/>
+
+    <NumberPicker
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/sleepNP"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        >
+
+    </NumberPicker>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:text=" Siguiente "
+        android:textAllCaps="false"
+        android:id="@+id/hourFinishedBT"
+        android:textColor="#fff"
+        android:background="#3A1952"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"/>
+
+
+</LinearLayout>

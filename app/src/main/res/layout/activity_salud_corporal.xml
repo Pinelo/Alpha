@@ -9,87 +9,21 @@
     android:weightSum="1"
     android:background="#21314B">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#2d5891"
-        android:orientation="vertical">
+        android:background="#662D91">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <com.example.rogelio.saludtec.SleepViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/sleepVP">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tipo de Ejercicio"
-                android:textStyle="bold"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"/>
+        </com.example.rogelio.saludtec.SleepViewPager>
 
-            <RadioGroup
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:padding="25dp">
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Aerobico"
-                    android:textColor="#fff"
-                    android:buttonTint="#fff"
-                    android:layout_marginRight="25dp"/>
-
-                <RadioButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Anaerobico"
-                    android:textColor="#fff"
-                    android:buttonTint="#fff"/>
+    </RelativeLayout>
 
 
-            </RadioGroup>
-
-
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="15dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:text="Horas"/>
-
-            <NumberPicker
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:divider="#fff"
-                android:textColor="#fff"
-                >
-
-            </NumberPicker>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 
 

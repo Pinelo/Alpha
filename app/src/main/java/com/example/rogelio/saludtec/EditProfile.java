@@ -65,6 +65,8 @@ public class EditProfile extends AppCompatActivity {
 
 //      minimo para el peso de usuario
         userWeightET.setMinValue(30);
+//        user.setMaxValue(1000);
+        userWeightET.setWrapSelectorWheel(false);
 
         updateTextViews();
 

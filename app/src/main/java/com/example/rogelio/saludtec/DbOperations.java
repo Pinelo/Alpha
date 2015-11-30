@@ -31,7 +31,7 @@ public class DbOperations {
     public void addReport(NutritionReport report) {
         db = dbHandler.getWritableDatabase();
 
-        if (checkIfReportHasBeenMade(report.getDate())) {
+        if (checkIfReportHasBeenMade(report)) {
             try{
                 ContentValues values = new ContentValues();
                 values.put(DBHandler.COLUMN_NUTRITION_ONE, report.getCriteriaOne());
@@ -56,9 +56,42 @@ public class DbOperations {
         }
     }
 
+    public void addReport(SleepReport report) {
+        db = dbHandler.getWritableDatabase();
+
+        if (checkIfReportHasBeenMade(report)) {
+            try{
+                ContentValues values = new ContentValues();
+                values.put(DBHandler.COLUMN_LIGHTS_OUT_TIME, report.getLightsOut());
+                values.put(DBHandler.COLUMN_WAKE_UP_TIME, report.getWakeUpTime());
+                values.put(DBHandler.COLUMN_SLEEP_AMMOUNT, report.getSleepAmmount());
+                values.put(DBHandler.COLUMN_NIGHT_WAKE_UPS, report.getNightWakeUps());
+                values.put(DBHandler.COLUMN_SLEEP_QUALITY, report.getSleepQuality());
+                values.put(DBHandler.COLUMN_SIESTA, report.getSiesta());
+                values.put(DBHandler.COLUMN_CAFFEINE_AFTER_SIX, report.getCaffeineAfterSix());
+                values.put(DBHandler.COLUMN_ALCOHOL_AFTER_SIX, report.getAlcoholAfterSix());
+                values.put(DBHandler.COLUMN_STRESS, report.getStress());
+                values.put(DBHandler.COLUMN_SLEEP_MEDICINE, report.getSleepMedicine());
+                values.put(DBHandler.COLUMN_RELAX, report.getRelax());
+                values.put(DBHandler.COLUMN_DIET, report.getDiet());
+                values.put(DBHandler.COLUMN_EXCERCISE, report.getExcercise());
+                values.put(DBHandler.COLUMN_ENERGY, report.getEnergy());
+                values.put(DBHandler.COLUMN_SLEEP_DATE, report.getDate());
+                values.put(DBHandler.COLUMN_SLEEP_TIME, report.getTime());
+
+                db.insert(DBHandler.TABLE_SLEEP, null, values);
+                Log.d("db", "Sleep Report added");
+
+            } catch (SQLiteException e) {
+                Log.d("tag", "Error while trying to add product to database");
+            }
+        }
+    }
+
 //    returns false if a report has been made for the provided day
-    private boolean checkIfReportHasBeenMade(String date) {
+    private boolean checkIfReportHasBeenMade(NutritionReport report) {
         SQLiteDatabase db = dbHandler.getReadableDatabase();
+        String date = report.getDate();
 
 
 //        Calendar cal = Calendar.getInstance();
@@ -69,6 +102,25 @@ public class DbOperations {
 
         String query = "SELECT * FROM " + DBHandler.TABLE_NUTRITION + " WHERE " +
                 DBHandler.COLUMN_NUTRITION_DATE + " = " + date;
+
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.getCount() == 0) {return true;} else {return false;}
+
+    }
+
+    private boolean checkIfReportHasBeenMade(SleepReport report) {
+        SQLiteDatabase db = dbHandler.getReadableDatabase();
+        String date = report.getDate();
+
+
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(TODAY);
+//        cal.add(Calendar.DAY_OF_MONTH, 1); //Adds a day
+//        cal.add(Calendar.DAY_OF_MONTH, -1); //Goes to previous day
+//        yourDate = cal.getTime();
+
+        String query = "SELECT * FROM " + DBHandler.TABLE_SLEEP + " WHERE " +
+                DBHandler.COLUMN_SLEEP_DATE + " = " + date;
 
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.getCount() == 0) {return true;} else {return false;}
@@ -99,6 +151,41 @@ public class DbOperations {
                     cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_NUTRITION_TEN)),
                     cursor.getString(cursor.getColumnIndex(dbHandler.COLUMN_NUTRITION_DATE)),
                     cursor.getString(cursor.getColumnIndex(dbHandler.COLUMN_NUTRITION_TIME))
+            );
+            reports.add(report);
+        }
+        return reports;
+    }
+
+    public List<SleepReport> getSleepReportsSince(String date) {
+        List<SleepReport> reports = new ArrayList<>();
+        SleepReport report;
+        db =dbHandler.getReadableDatabase();
+
+//        Obtiene las ultimas 3
+        String query = "SELECT * FROM " + DBHandler.TABLE_SLEEP + " ORDER BY " +
+                DBHandler.COLUMN_SLEEP_ID + " DESC LIMIT 3";
+        Cursor cursor = db.rawQuery(query, null);
+
+        while(cursor.moveToNext()) {
+            report = new SleepReport(
+
+                    cursor.getString(cursor.getColumnIndex(dbHandler.COLUMN_LIGHTS_OUT_TIME)),
+                    cursor.getString(cursor.getColumnIndex(dbHandler.COLUMN_WAKE_UP_TIME)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_SLEEP_AMMOUNT)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_NIGHT_WAKE_UPS)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_SLEEP_QUALITY)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_SIESTA)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_CAFFEINE_AFTER_SIX)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_ALCOHOL_AFTER_SIX)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_STRESS)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_SLEEP_MEDICINE)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_RELAX)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_DIET)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_EXCERCISE)),
+                    cursor.getInt(cursor.getColumnIndex(dbHandler.COLUMN_ENERGY)),
+                    cursor.getString(cursor.getColumnIndex(dbHandler.COLUMN_SLEEP_DATE)),
+                    cursor.getString(cursor.getColumnIndex(dbHandler.COLUMN_SLEEP_TIME))
             );
             reports.add(report);
         }
@@ -147,6 +234,22 @@ public class DbOperations {
         }
     }
 
+    public int getSleepScore() {
+        List<SleepReport> sleepReports = getSleepReportsSince("not finished");
+        int i;
+        float sum = 0, tempS;
+
+        for (i = 0; i < sleepReports.size(); i++) {
+            tempS = sleepReports.get(i).getGrade();
+            sum += tempS;
+        }
+        if (sum == 0) {
+            return  0;
+        } else {
+            return (int) sum/sleepReports.size();
+        }
+    }
+
     public int[] getNutritionAverages() {
         List<NutritionReport> nutritionReports = getNutritionReportsSince("not finished");
 
@@ -177,5 +280,15 @@ public class DbOperations {
         }
         average = sum/top*100;
         return (int ) average;
+    }
+
+    public int getMostRecentSleepScore() {
+        List<SleepReport> list = getSleepReportsSince("");
+        return (int)list.get(0).getGrade();
+    }
+
+    public int getMostRecentFoodScore() {
+        List<NutritionReport> list = getNutritionReportsSince("");
+        return (int)list.get(0).getGrade();
     }
 }

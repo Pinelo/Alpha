@@ -10,7 +10,7 @@ import android.util.Log;
  */
 public class DBHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
     private static final String DATABASE_NAME = "saludTec";
 
     public static final String TABLE_NUTRITION = "tableNutrition";
@@ -50,6 +50,9 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_DIET = "criteria_twelve";
     public static final String COLUMN_EXCERCISE = "criteria_thirteen";
     public static final String COLUMN_ENERGY = "criteria_fourteen";
+    public static final String COLUMN_SLEEP_DATE = "date";
+    public static final String COLUMN_SLEEP_TIME = "time";
+
 
 
     private static DBHandler dbHandlerInstance;
@@ -109,7 +112,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 COLUMN_RELAX + " INTEGER, " +
                 COLUMN_DIET + " INTEGER, " +
                 COLUMN_EXCERCISE + " INTEGER, " +
-                COLUMN_ENERGY + " INTEGER "+ ")";
+                COLUMN_ENERGY + " INTEGER, "+
+                COLUMN_SLEEP_DATE + " TEXT, " +
+                COLUMN_SLEEP_TIME + " TEXT )";
 
         db.execSQL(CREATE_SLEEP_TABLE);
         Log.d("db", "created sleep table");

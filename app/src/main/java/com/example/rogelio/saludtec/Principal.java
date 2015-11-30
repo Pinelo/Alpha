@@ -178,8 +178,10 @@ public class Principal extends FragmentActivity {
 
     private void scoreSetUp() {
 //        String currentDate = timeFormat.format(System.currentTimeMillis());
-        scoreHealth = dbo.getNutritionScore();
+        scoreSleep =dbo.getMostRecentSleepScore();
+        scoreHealth = dbo.getMostRecentFoodScore();
         scores[0] = scoreHealth;
+        scores[1] = scoreSleep;
         updateScoreCircle();
     }
 

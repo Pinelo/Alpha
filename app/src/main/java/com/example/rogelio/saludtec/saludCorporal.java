@@ -1,5 +1,8 @@
 package com.example.rogelio.saludtec;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -16,6 +19,8 @@ public class saludCorporal extends AppCompatActivity {
     public String[] lightsOutValues;
 //    public String[] sleepAmmountValues;
     public String[] wakeUpValues;
+    static DbOperations dbo;
+    static Activity activity;
 
 //    public String[] nightWakeUpValues;
 
@@ -28,6 +33,8 @@ public class saludCorporal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salud_corporal);
+        dbo = new DbOperations(this);
+        activity = this;
 
         lightsOutValues = getResources().getStringArray(R.array.lightsOutValues);
         wakeUpValues = getResources().getStringArray(R.array.wakeUpValues);
@@ -43,8 +50,15 @@ public class saludCorporal extends AppCompatActivity {
         report.setDate(dateFormat.format(System.currentTimeMillis()));
         report.setTime(timeFormat.format(System.currentTimeMillis()));
 
+        dbo.addReport(report);
 
-//        SleepReport sReport = report;
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(EditProfile.USER_PROFILE,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(LAST_FITNESS_UPDATE, dateFormat.format(System.currentTimeMillis()));
+        editor.commit();
+
+        activity.finish();
     }
 
     private class SleepPagerAdapter extends FragmentPagerAdapter {

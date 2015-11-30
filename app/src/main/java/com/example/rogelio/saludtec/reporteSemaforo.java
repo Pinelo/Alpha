@@ -57,7 +57,7 @@ public class reporteSemaforo extends AppCompatActivity {
     private void updateScores() {
 
         foodReportProgress = dbo.getNutritionScore();
-        fitReportProgress = 43;
+        fitReportProgress = dbo.getSleepScore();
 
         foodReportPB.setProgress(foodReportProgress);
         fitReportPB.setProgress(fitReportProgress);
